@@ -1,48 +1,104 @@
-﻿using System;
+﻿using Assignment;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Namespace;
 
-namespace Namespace
+namespace Namespace.Tests
 {
-
-    /// <summary>
-    /// Represents a robot with navigation capabilities.
-    /// </summary>
-    public class Robot
+    [TestClass]
+    public class RobotTests
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Robot"/> class with the default number of commands (6).
-        /// </summary>
-        public Robot()
+        [TestMethod]
+        public void DefaultRobot_NumCommands_InitializedTo6()
         {
-            NumCommands = 6;
+            // Arrange
+            Robot robot = new();
+
+            // Act
+            int numCommands = robot.NumCommands;
+
+            // Assert
+            Assert.AreEqual(6, numCommands);
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Robot"/> class with the specified number of commands.
-        /// </summary>
-        /// <param name="numCommands">The number of commands the robot can execute.</param>
-        public Robot(int numCommands)
+        [TestMethod]
+        public void CustomRobot_NumCommands_InitializedToSpecifiedValue()
         {
-            NumCommands = numCommands;
+            // Arrange
+            const int ExpectedCommands = 10;
+            Robot robot = new(ExpectedCommands);
+
+            // Act
+            int numCommands = robot.NumCommands;
+
+            // Assert
+            Assert.AreEqual(ExpectedCommands, numCommands);
         }
 
-        /// <summary>
-        /// Gets or sets the number of commands the robot can execute.
-        /// </summary>
-        public int NumCommands { get; set; }
+        [TestMethod]
+        public void Robot_IsPowered_DefaultValue_IsFalse()
+        {
+            // Arrange
+            Robot robot = new();
 
-        /// <summary>
-        /// Gets or sets a value indicating whether the robot is powered on or off.
-        /// </summary>
-        public bool IsPowered { get; set; }
+            // Act
+            bool isPowered = robot.IsPowered;
 
-        /// <summary>
-        /// Gets or sets the X-coordinate of the robot's position.
-        /// </summary>
-        public int X { get; set; }
+            // Assert
+            Assert.IsFalse(isPowered);
+        }
 
-        /// <summary>
-        /// Gets or sets the Y-coordinate of the robot's position.
-        /// </summary>
-        public int Y { get; set; }
+        [TestMethod]
+        public void Robot_X_DefaultValue_IsZero()
+        {
+            // Arrange
+            Robot robot = new();
+
+            // Act
+            int x = robot.X;
+
+            // Assert
+            Assert.AreEqual(0, x);
+        }
+
+        [TestMethod]
+        public void Robot_Y_DefaultValue_IsZero()
+        {
+            // Arrange
+            Robot robot = new();
+
+            // Act
+            int y = robot.Y;
+
+            // Assert
+            Assert.AreEqual(0, y);
+        }
+
+        [TestMethod]
+        public void Robot_SetX_UpdateXValue()
+        {
+            // Arrange
+            Robot robot = new()
+            {
+                // Act
+                X = -5
+            };
+
+            // Assert
+            Assert.AreEqual(-5, robot.X);
+        }
+
+        [TestMethod]
+        public void Robot_SetY_UpdateYValue()
+        {
+            // Arrange
+            Robot robot = new()
+            {
+                // Act
+                Y = -5
+            };
+
+            // Assert
+            Assert.AreEqual(-5, robot.Y);
+        }
     }
 }
