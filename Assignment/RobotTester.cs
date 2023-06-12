@@ -31,7 +31,7 @@ namespace Assignment
             } while (input < 6);
 
             // Run the robot
-            newRobot.Run();
+            newRobot.Run();//
         }
 
         /// <summary>
