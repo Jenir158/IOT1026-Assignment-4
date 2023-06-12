@@ -48,6 +48,7 @@ namespace Assignment
         /// <summary>
         /// Runs the loaded commands on the robot, displaying the robot's state after each command execution.
         /// </summary>
+        /// Run is for running the quantity of user input in the process!
         public void Run()
         {
             for (var i = 0; i < _commandsLoaded; ++i)
@@ -116,6 +117,7 @@ namespace Assignment
         /// </summary>
         /// <param name="command">The command to load.</param>
         /// <returns>Returns true if the command was successfully loaded, false otherwise.</returns>
+        /// Load is for putting the process in robot!
         public bool LoadCommand(IRobotCommand command)
         {
             if (_commandsLoaded >= NumCommands)
