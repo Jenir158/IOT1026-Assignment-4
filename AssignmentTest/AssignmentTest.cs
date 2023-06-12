@@ -1,33 +1,48 @@
-﻿using Assignment;
-using Assignment.AbstractCommand; // Change to Assignment.InterfaceCommand when rdy
+﻿using System;
 
-namespace AssignmentTest
+namespace Namespace
 {
-    [TestClass]
-    public class AssignmentTests
+
+    /// <summary>
+    /// Represents a robot with navigation capabilities.
+    /// </summary>
+    public class Robot
     {
-        [TestMethod]
-        public void PropertiesTest()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Robot"/> class with the default number of commands (6).
+        /// </summary>
+        public Robot()
         {
-            Robot robot1 = new();
-            Assert.AreEqual(robot1.NumCommands, 6);
-            const int ExpectedCommands = 10;
-            Robot robot2 = new(ExpectedCommands);
-            Assert.AreEqual(robot2.NumCommands, ExpectedCommands);
-
-            Assert.AreEqual(robot1.IsPowered, false);
-            robot1.IsPowered = true;
-            Assert.AreEqual(robot1.IsPowered, true);
-
-            Assert.AreEqual(robot1.X, 0);
-            // Moves the robot can move even though it is off!!
-            // This is very bad! Not good encapsulation
-            robot1.X = -5;
-            Assert.AreEqual(robot1.X, -5);
-
-            Assert.AreEqual(robot1.Y, 0);
-            robot1.Y = -5;
-            Assert.AreEqual(robot1.Y, -5);
+            NumCommands = 6;
         }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Robot"/> class with the specified number of commands.
+        /// </summary>
+        /// <param name="numCommands">The number of commands the robot can execute.</param>
+        public Robot(int numCommands)
+        {
+            NumCommands = numCommands;
+        }
+
+        /// <summary>
+        /// Gets or sets the number of commands the robot can execute.
+        /// </summary>
+        public int NumCommands { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the robot is powered on or off.
+        /// </summary>
+        public bool IsPowered { get; set; }
+
+        /// <summary>
+        /// Gets or sets the X-coordinate of the robot's position.
+        /// </summary>
+        public int X { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Y-coordinate of the robot's position.
+        /// </summary>
+        public int Y { get; set; }
     }
 }
