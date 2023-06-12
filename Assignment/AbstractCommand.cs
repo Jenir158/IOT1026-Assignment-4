@@ -21,7 +21,7 @@
         }
     }
 
-    public class WestCommand : IRobotCommand
+ public class WestCommand : IRobotCommand
     {
         public void Run(Robot robot)
         {
@@ -32,7 +32,7 @@
         }
     }
 
-    public class EastCommand : IRobotCommand
+ public class EastCommand : IRobotCommand
     {
         public void Run(Robot robot)
         {
